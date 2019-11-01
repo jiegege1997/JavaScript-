@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./ajax.js"></script>
+	<script>
+	    console.log(myAjax);
+		window.onload = function(){
+			//1.获取tbody
+			//2获取后台数据
+			//3将后台数据展示到表格中
+			var tbody = document.getElementsByTagName('tbody')[0];
+
+			
+		}
+	</script>
+</head>
+<body>
+	<div class="btns-div">
+		<button>新增</button>
+		<button>批量删除</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>名称</th>
+				<th>描述</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td></td>
+				<td></td>
+				<td><button>删除</button></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

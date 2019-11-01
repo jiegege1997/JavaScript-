@@ -1,0 +1,27 @@
+JS
+特点
+1 浏览器端执行，node环境执行
+2 解释性语言
+3 弱类型语言
+4 自上而下执行
+
+基本数据类型  undefined  null  boolean number string
+引用数据类型  object {}
+              array  [,]
+              Function hjj(形式参数，形参，参数){}
+
+							hjj(实际参数,实参);
+							function add(a,b){
+							   return a+b;
+							}
+							var result = add(1,2);
+
+
+
+
+
+
+
+
+
+

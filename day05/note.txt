@@ -1,0 +1,91 @@
+console.log(test);
+var test = function(){};
+var test = 1;
+function test(){}
+
+
+复习 
+
+对象 
+可以放属性和方法 
+     访问属性
+		 obj.name
+		 obj['name']
+		 for(var key in obj){
+		  key   属性名  
+		 	obj[key]  属性值
+		 }
+    delete  obj.name
+		delete  obj['name']
+		delete  ovj[key]
+		新增属性
+			obj.age = 12;
+		修改属性
+			obj.age = 14;
+判断是否是自由属性
+    obj.hasOwnProperty('name');
+判断是否有某个属性 （自由属性,继承属性）
+
+
+    'name'  in  obj
+判断是否是自由属性 并且可枚举
+   obj.propertyIsEnumerable('name');
+
+
+Object原型中的属性和方法
+   constructor  构造函数
+	 toString()
+	 valueOf()
+	 tolocaleString()
+
+
+每一个构造函数都有一个原型对象
+  Object.prototype.constructor === Object;
+  obj.toString === Object.prototype.toString 
+
+
+
+函数
+   创建方式
+	     function test(){}
+			 var test = function(){}
+	 属性
+	     arguments   是一个类数组对象  保存实参
+			     arguments.length  实参的个数
+					 arguments.callee  函数本身
+       this  
+			    函数运行的执行环境
+					test();  在test函数内部 this 是global 对象  浏览器 中  window对象
+		     在nodeJS中 global
+				 在浏览器中 window对象
+
+
+函数调用方式
+   test();  global对象
+	 test.call(test函数内部this指向对象,参数1，参数2);
+	 test.apply(test函数内部this指向对象,[参数1，参数2]);
+	 test.apply(this,[3,6,9,16,24]);
+	 test.bind(this) ();
+	 bind方法可以更改this指向,返回的是一个函数，需要后面加()去执行
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

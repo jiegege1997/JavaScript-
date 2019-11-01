@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本类型 nodeType 3</title>
+	<script>
+		window.onload = function(){
+
+			var text = document.body.firstChild;
+			console.log(text);
+			text.appendData('world');
+			//text.splitText(5);
+			//console.log(document.body.childNodes);
+             
+            //合并
+			//document.body.normalize();
+			//console.log(document.body.childNodes);
+			//console.log(text);
+			//提取
+			console.log(text.substringData(5,5));
+			text.deleteData(5,5);
+			console.log(text);
+
+		}
+	</script>
+</head>
+<body>hello</body></html>

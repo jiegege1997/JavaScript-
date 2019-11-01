@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM-node属性和方法</title>
+     <script>
+     	console.log(document);
+     	console.log(document.constructor);//HTMLDocument
+     	console.log(HTMLDocument.prototype.__proto__.constructor);//Document
+     	//文档加载完成之后再执行某段JS代码 (window.onload = function(){})
+     	//alert(1);
+     	window.onload = function(){
+     		//body节点
+     	console.log(document.body);
+     	console.log(document.body.nodeType); //节点类型 Element    1
+     	console.log(document.body.nodeName); //元素节点名称    全大写的
+     	console.log(document.body.nodeValue);  //一般对文本节点 或者 注释节点操作   节点值 null
+        console.log(document.body.firstChild);
+        console.log(document.body.firstChild.nodeValue);   //最美的不是下雨天
+        //孩子节点
+        console.log(document.body.childNodes);   //类数组对象，存放孩子节点
+        //将类数组对象转成数组
+        var childs = document.body.childNodes;
+        var arr = Array.prototype.slice.call(childs,0);
+        console.log(arr);
+        console.log(childs[2].parentNode);  //找一个元素的父节点  body
+        console.log(document.body.ownerDocument); //找属于哪个文档对象
+        console.log(document.body.childNodes[0].nextSibling.hasChildNodes());  //nextSibling  hasChildNodes()
+        
+      //      Array.prototype.mySlice = function(){
+	  //       var arr = [];
+	  //       for(var i=arguments[0];i<(arguments[1]?arguments[1]:this.length);i++){
+				// arr.push(this[i]);
+	  //       }
+      //          return arr;
+      //      }
+      //      var temp = [3,5,9,6,5];
+      //      console.log(temp.mySlice(3));
+
+
+          
+     	   //alert(1);   //弹出框
+     	}
+     	
+     </script>
+     
+</head>
+<body>
+    最美的不是下雨天
+	<div>hello</div>
+	<span>world</span>
+	<!-- comment 8 -->
+    <div></div>
+
+
+
+
+
+</body>
+</html>

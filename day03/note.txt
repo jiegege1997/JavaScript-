@@ -1,0 +1,37 @@
+  运算符  和操作符
+	   + - * / %
+		 ++ --  
+     一元运算符  +  -
+		 三目运算符  a>2? 3:4;
+		 逻辑运算符 &&  找假
+		            ||  找真
+	
+   数据类型的转换  
+	 null 和 undefined 不可以转化为toString()
+	     var num = 3;
+	     num.toSting();
+	     num.toString(2);
+			 num.toString(8);
+			 num.toString(16);
+   String()
+	 (+'')
+
+
+
+	 Boolean()
+   !!
+   
+
+
+	 Number()
+	 +  -  
+	 parseInt()
+	 parseFloat()
+
+
+
+
+2. String类型加其他基本数据类型 进行拼接
+   '1'+1   11
+	 '1'+true  1true
+3. object类型加其他基本数据类型

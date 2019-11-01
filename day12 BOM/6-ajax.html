@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script>
+	   
+	    
+	    
+	    deleteCategoryById(150);
+        batchDeleteCategory({ids:[229,232].toString()});
+
+
+	   //查看
+	   function findAllcategory(){
+	    	var http = new XMLHttpRequest();
+	    	http.open('GET','http://134.175.154.93:8099/manager/category/findAllCategory');
+	    	//监听
+	    	http.onreadystatechange = function(){
+	    		if(http.status===200&&http.readyState===4){
+	    			console.log(http.responseText);
+	    		}
+	    	}
+	    	//发送
+	    	http.send();
+	    }
+
+
+      //删除栏目
+      //参数:要删除的id
+      function deleteCategoryById(id){
+           var http = new XMLHttpRequest();
+
+           http.open('GET','http://134.175.154.93:8099/manager/category/deleteCategoryById?id='+id);
+
+           //监听
+           http.onreadystatechange = function(){
+           	if(http.status===200&&http.readyState===4){
+	    			console.log(http.responseText);
+           }
+           //发送
+           http.send();
+      }
+    }
+
+
+
+
+      //批量删除
+      //参数:批量删除的id的数组
+      function batchDeleteCategory(arr){
+        var http = new XMLHttpRequest();
+   		http.open('POST','http://134.175.154.93:8099/manager/category/batchDeleteCategory')
+   		//设置监听
+   		http.onreadystatechange = function(){
+   			if(http.status===200&&http.readyState===4){
+   				//响应数据
+   				console.log(http.responseText);
+   			}
+   		}
+   		//设置请求头
+   		http.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+        //传递表单格式的数据
+        http.send(encodeFormData({ids:arr.toString()}));
+        findAllcategory();
+      }
+
+
+
+
+     //保存
+	function saveCategory(obj){
+		//给后台传递数据的ajax,get形式传递的
+		//发送post请求 并且携带参数
+   		var http = new XMLHttpRequest();
+   		http.open('POST','http://134.175.154.93:8099/manager/category/findAllCategory')
+   		//设置监听
+   		http.onreadystatechange = function(){
+   			if(http.status===200&&http.readyState===4){
+   				console.log(http.responseText);
+   			}
+   		}
+   		//设置请求头
+   		http.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+        //传递表单格式的数据
+        http.send(encodeFormData(obj));
+	}
+       
+
+
+
+
+		//将js的对象转换成表单格式数据
+		function encodeFormData(data){
+				if(!data){
+					return "";
+				}
+				var pairs = [];
+				for(var name in data){
+					if(!data.hasOwnProperty(name)){
+						continue;
+					}
+					if(typeof data[name] == "function"){
+						continue;
+					}
+					var value = data[name].toString();
+					name = encodeURIComponent(name.replace("%20","+"));//编码名字
+					value = encodeURIComponent(value.replace("%20","+"));//编码值
+					pairs.push(name+"="+value);
+				}
+				return pairs.join('&');
+			}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

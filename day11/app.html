@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>js检测Radio选中</title>
+</head>
+<body>
+   <label>
+       <input type="radio" value="0" name="switch">关
+   </label>
+   <label>
+       <input type="radio" value="1" name="switch" checked>开
+   </label>
+    
+   <p id="result">        
+       当前选中的 radio 值为：<b></b>
+       <button onclick="checkRadio()">检测 Radio</button>
+   </p>
+ 
+   <script>
+       var radios = document.querySelectorAll('input[type="radio"]'),
+           result = document.querySelector('#result > b');
+ 
+       function checkRadio() {
+           for (var i = 0; i < radios.length; i++) {
+               if (radios[i].checked) {
+                   result.innerHTML = radios[i].value;
+               }
+           }
+       }
+   </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+function Animal(name,age){
+            this.name =name;
+            this.age = age;
+     	}
+Animal.prototype.sayName = 
+function(){
+	console.log(this.name);
+}
+var  animal = new Animal('小白',3);
+console.log(animal);//{name:'小白',age:3}
+animal.sayName();//小白
+
+
+function Dog(name,age){
+Animal.call(this,name,age); //调用Animal中的方法 通过.call使this指向Dog
+}
+var dog = new Dog('一休',5);
+console.log(dog);//{'一休'，5}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

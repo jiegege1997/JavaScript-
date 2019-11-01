@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		console.log(location);
+		console.log(window.location === document.location);
+		window.onload = function(){
+			var btns = document.getElementsByTagName('button');
+			btns[0].onclick = function(){
+				location = 'http://www.baidu.com';
+			}
+			btns[1].onclick = function(){
+				//参数默认为false,可以从缓存中获取 如果为true 强制从服务器取
+				location.reload();
+			}
+			btns[2].onclick = function(){
+				//跳转下一页
+				history.forward();
+			}
+		}
+	</script>
+</head>
+<body>
+	<button>打开新页面</button>
+	<button>刷新</button>
+	<button>跳转下一页</button>
+</body>
+</html>

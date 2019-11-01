@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>超时调用-间歇调用</title>
+	<script>
+		//2秒之后输出hello
+		//window.setTimeout();
+		var id = setTimeout(function(){
+            console.log('hello');
+		},10000);
+		console.log('-----------');
+        setTimeout(function(){
+        	//终止10s的setTimeout
+        	console.log('5s了');
+        	//清除超时调用
+        	clearTimeout(id);  
+        },5000)
+
+
+
+        //间歇调用
+        //每隔一秒输出1
+        var sid = setInterval(function(){
+        	console.log('hello');
+        },1000);
+        setTimeout(function(){
+        	console.log('10s了');
+        	clearInterval(sid);
+        },10000)
+        //在10秒之后终止1的输出,在10秒之后,停止间歇调用
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

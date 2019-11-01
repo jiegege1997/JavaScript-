@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件代理 事件委托</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			border: 1px solid blue;
+			overflow: hidden;
+		}
+		li{
+			list-style: none;
+			height: 100px;
+			width: 100px;
+			border: 1px solid red;
+			float: left;
+			margin: 10px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var lis = document.getElementsByTagName('li');
+			
+			// for(var i=0;i<lis.length;i++){
+			// 	lis[i].onclick = (function(num){
+			// 		return function(){
+			// 			alert(num+1);
+			// 		}
+			// 	})(i);
+	
+			// }
+
+            //2 将类数组对象转换成数组对象  再用forEach
+			lis = Array.prototype.slice.call(lis,0);
+			// lis.forEach(function(item,index){
+   //                  item.onclick = function(){
+   //                  	alert(index+1);
+   //                  }
+			// });
+		
+			
+            //3 事件代理 委托  原先给li绑定的事件,让父元素去代理绑定
+            var ul = document.getElementsByTagName('ul')[0];
+            ul.onclick = function(event){
+            	 if(event.target.nodeName==='LI'){
+            	 	//处理所有的li为白色
+            	 	lis.forEach(function(item){
+                 	item.style.background = '#fff';
+            	 	event.target.style.background = 'red';
+                 })
+            	 }
+            }
+
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>one</li>
+		<li>two</li>
+		<li>three</li>
+		<li>four</li>
+	</ul>
+</body>
+</html>

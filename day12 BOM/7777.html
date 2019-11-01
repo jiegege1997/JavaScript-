@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table{
+		border-collapse: collapse;
+		width: 400px;
+		}
+		table,td,th{
+			border:1px solid #ccc;
+			text-align: center;
+		}
+	</style>
+
+
+	<script>
+//查看(调用封装函数)
+//myAjaxGet('http://134.175.154.93:8099/manager/category/findAllCategory'); 
+//删除(调用封装函数和删除函数)
+//DeleteCategoryById(733);
+//批量删除
+//batchDeleteCategory({ids:[791,792,793].toString()});
+//修改
+//saveCategory({id:'2',name:'迪迦奥特曼',comment:'泰罗奥特曼',no:1});
+
+
+
+//myAjaxGet
+		function myAjaxGet(url,callback){
+
+			var http = new XMLHttpRequest();
+
+			http.open('GET',url);
+
+			http.onreadystatechange = function(){
+				if(http.status===200&&http.readyState===4){
+					 callback(http.responseText); 
+				}
+			} 
+
+			http.send();
+			//设置请求头
+			
+
+			
+
+
+           
+
+
+		}
+//myAjaxPOST
+
+
+//增加方法
+    function saveCategory(obj){
+    	var http = new XMLHttpRequest();
+            
+            http.open('POST','http://134.175.154.93:8099/manager/category/saveOrUpdateCategory');
+
+
+		    http.onreadystatechange = function(){
+				if(http.status===200&&http.readyState===4){
+					 console.log(http.responseText);
+				}
+			}
+            //4.建立请求头
+			http.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+            //5.传递表单格式数据
+
+			http.send(encodeFormData(obj));
+    }      
+
+
+//删除方法
+     function DeleteCategoryById(id){
+     	myAjaxGet('GET','http://134.175.154.93:8099/manager/category/deleteCategoryById?id='+id);
+     }
+
+
+
+//批量删除
+     function batchDeleteCategory(obj){
+    	var http = new XMLHttpRequest();
+            
+            http.open('POST','http://134.175.154.93:8099/manager/category/batchDeleteCategory');
+
+
+		    http.onreadystatechange = function(){
+				if(http.status===200&&http.readyState===4){
+					 console.log(http.responseText);
+				}
+			}
+            //4.建立请求头
+			http.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+            //5.传递表单格式数据
+
+			http.send(encodeFormData(obj));
+
+
+} 
+
+//将js的对象转换成表单格式数据
+	function encodeFormData(data){
+			if(!data){
+				return "";
+			}
+			var pairs = [];
+			for(var name in data){
+				if(!data.hasOwnProperty(name)){
+					continue;
+				}
+				if(typeof data[name] == "function"){
+					continue;
+				}
+				var value = data[name].toString();
+				name = encodeURIComponent(name.replace("%20","+"));//编码名字
+				value = encodeURIComponent(value.replace("%20","+"));//编码值
+				pairs.push(name+"="+value);
+			}
+			return pairs.join('&');
+		}				
+
+//更新表格
+    window.onload = function(){
+    	var tbody = document.getElementsByTagName('tbody')[0];
+    	var btn1 = document.getElementById('hjj');
+    	 myAjaxGet('http://134.175.154.93:8099/manager/category/findAllCategory',function(ss){
+             
+    	 })
+    	
+
+    	btn1.onclick = function(){
+    		 myAjaxGet('http://134.175.154.93:8099/manager/category/findAllCategory',function(ss){
+    		 	//将JSON数据转换为 JS对象
+              var stus = JSON.parse(ss).data;
+              var str = '';
+              
+               console.log(stus);
+              //遍历数组 
+			stus.forEach(function(item){
+				str += `
+					<tr>
+						<td><input type="checkbox"></td>
+						<td>`+item.id+`</td>
+						<td>`+item.name+`</td>
+						<td>`+item.comment+`</td>
+						<td>`+item.no+`</td>
+						<td><button>删除</button></td>
+					</tr>
+				`;
+			});
+			tbody.innerHTML = str;
+    	 })
+    	}
+    }
+
+		
+		
+        
+</script>
+</head>
+
+
+
+
+<body>
+<button id="hjj">展示</button>
+<button id="add">新增</button>
+<button id="xiugai">修改</button>
+<button id="batchdelete">批量删除</button>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>id</th>
+				<th>name</th>
+				<th>comment</th>
+				<th>no</th>
+				<th>删除</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
+</body>
+</html>

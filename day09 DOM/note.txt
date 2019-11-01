@@ -1,0 +1,114 @@
+正则表达式
+     /正则表达式语法/img
+      模式次数
+      模式:直接量 a  b  c
+           字符类  .
+             \d
+             \D
+             \w
+             \W 
+           \s  空白字符
+           \S  非空白字符
+           字符组  [xym]
+                   [^xym]
+            位置 ^  $
+            \b  单词与空格之间的字符   hello world
+            \B  ab
+            分组
+               (hello){2}
+               {2}
+            选择-或者
+              s|h
+             次数
+                *
+                +
+                ？
+                {2}
+                {2,}
+                {2,5}  
+             次数后面? 代表非贪婪模式匹配
+           包装器
+            Number
+            String
+            Boolean
+            装箱操作，拆箱操作
+            Math对象
+              Math.min(,,,,)
+              Math.max(,,,,)
+              Math.ceil(num)   向上
+              Math.floor(num)  向下
+              Math.round(num)  四舍五入
+              Math.random()   [0,1) 随机数
+            Date构造函数
+              new Date()  获取当前时间
+              new Date(时间戳)   将时间戳转换为时间类型
+              new Date('2019-07-17 09:09:09')
+              new Date('2019/07/07 09:09:09');
+
+            date.getFullYear()
+            date.getMonth()+1
+            date.getDate()
+            date.getHours()
+            date.getMinutes()
+            date.getSeconds()
+            date.getDay()
+            星期0 - 星期6
+
+            date.getTime()   //获取JS的时间对象对应的时间戳表示
+
+前后端关于时间的数据交互
+   需要前后端商量格式
+     1.时间戳（做项目经常会用的）
+        前端给后台  时间戳
+           '2019-07-07'
+           先转换成Date实例，调用getTime()
+        后台给前端  时间戳
+           先将时间戳转换成Date实例,调用年月日时分秒的方法 转换成字符串 在前端页面显示
+     2.字符串
+        前端给后台  字符串
+            用日期插件采集到的就是字符串
+        后台给前端  字符串
+            直接展示 
+
+面向对象编程
+   批量创建对象
+   对象属性特性的控制
+   继承
+
+    person instanceof Person
+    preson instanceof Object 
+DOM操作（操作节点）
+  用来操作节点 
+  Node类型
+     Document类型  document
+     Element类型   元素节点类型
+     Text类型      文本节点
+     Comment类型    注释节点
+
+  DOM层级关系
+     html
+     |     |
+     head  body
+              |         |
+              文本节点  div节点
+
+  Node类型的属性和方法
+   ......
+  Document类型的属性和方法
+    document.
+    .....
+  Element类型的属性和方法
+    .....
+  Text类型的属性和方法
+    ....
+  Comment类型的属性
+    .....
+  
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Node</title>
+	<style>
+	*{
+        margin: 0;
+        padding: 0;
+
+	}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			margin: 10px;
+			float: left;
+		}
+	</style>
+	<script>
+		window.onload = 
+		function(){
+            //追加一个div到body中,创建div,获取body,然后使用appendChild()追加到末尾
+            //创建Element节点
+            var div = document.createElement('div');
+            //在元素节点内部添加内容
+            div.innerText = 'four';
+            //追加节点到末尾
+            document.body.appendChild(div);
+            //将one div追加到最后. 获取one,追加到末尾
+            var one = document.getElementById('1');
+            //克隆节点
+            var cloneOne = one.cloneNode(true);  //false只复制节点本身  true复制节点本身并且复制子节点  默认为false
+            document.body.appendChild(cloneOne);
+            //更改cloneOne内部文本
+            cloneOne.innerText = 'cloneOne';
+		}
+	</script>
+</head>
+<body>
+	<div id="1">one</div>
+	<div id="2">two</div>
+	<div id="3">three</div>
+</body>
+</html>

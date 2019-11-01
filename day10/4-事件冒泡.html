@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件冒泡</title>
+	<style>
+		.outer{
+			width: 400px;
+			height: 400px;
+			background-color: coral;
+			margin: 0 auto;
+		}
+		.center{
+			width: 200px;
+			height: 200px;
+			background-color: cyan;
+			margin: 100px auto;
+		}
+		.inner{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin: 50px auto;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var outer = document.getElementsByClassName('outer')[0];
+			var center = document.getElementsByClassName('center')[0];
+			var inner = document.getElementsByClassName('inner')[0];
+			// //DOM0绑定事件
+			// outer.onclick = 
+			// function(){
+   //             console.log('outer');
+   //             console.log(this);
+			// }
+			// center.onclick = 
+			// function(){
+			// 	console.log(this);
+   //             console.log('center');
+			// }
+			// inner.onclick = 
+			// function(){
+   //             console.log('inner');
+   //             console.log(this);
+			// }
+			function handle(event){
+				//console.log(this.className);
+				//console.log(this);
+				//事件对象event
+				console.log(event);
+
+				//target属性  事件目标 触发事件执行的元素
+				console.log(event.target);
+
+				//currentTarget this  当前正在执行事件处理程序的元素
+				console.log(event.currentTarget);
+
+				//阻止冒泡
+				//event.stopPropagation();  //ie8以上
+			
+				//event.stopPropagation();
+				
+			}
+			outer.onclick = handle;
+			center.onclick = handle;
+			inner.onclick = handle;
+
+		}
+	</script>
+</head>
+<body>
+	<div class="outer">
+	outer
+		<div class="center">
+		center
+			<div class="inner">inner</div>
+		</div>
+	</div>
+</body>
+</html>
